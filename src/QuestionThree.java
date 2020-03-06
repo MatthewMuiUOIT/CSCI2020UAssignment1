@@ -9,20 +9,24 @@ import javafx.stage.Stage;
 
 public class QuestionThree extends Application {
 
+    //Create pane
     Pane pane = new Pane();
 
     @Override
     public void start(Stage primaryStage)
     {
+        //Create lines and text
         Line[] line = new Line[3];
         Text[] text = new Text[3];
 
+        //Create circle and points
         Circle circle = new Circle(150, 150, 100);
         pane.getChildren().add(circle);
         circle.setFill(Color.TRANSPARENT);
         circle.setStroke(Color.BLACK);
 
         Circle[] circlePoints = new Circle[3];
+
 
         for (int i = 0; i < circlePoints.length; i++)
         {
@@ -31,6 +35,7 @@ public class QuestionThree extends Application {
             randomSpot(circlePoints[i], circle);
             int index = i;
 
+            //Read mouse movement
             circlePoints[i].setOnMouseDragged(e ->
             {
                 double radiusValue = Math.atan2(e.getY() - circle.getCenterY(), e.getX() - circle.getCenterX());
@@ -61,19 +66,23 @@ public class QuestionThree extends Application {
         pane.getChildren().addAll(text);
         pane.getChildren().addAll(circlePoints);
 
+        //Change point colours
         for (int i = 0; i < circlePoints.length; i++)
         {
             circlePoints[i].setFill(Color.RED);
             circlePoints[i].setStroke(Color.BLACK);
         }
 
-        primaryStage.setScene(new Scene(pane, 300, 300));
+        //Create scene
+        Scene scene = new Scene(pane, 300, 300);
+        primaryStage.setScene(scene);
         primaryStage.setTitle("Question 3");
         primaryStage.show();
     }
 
     private void updateLine(Line[] line, Circle[] circle, Text[] text)
     {
+        //Update line positions
         for (int i = 0; i < line.length; i++)
         {
             int circleIndex;

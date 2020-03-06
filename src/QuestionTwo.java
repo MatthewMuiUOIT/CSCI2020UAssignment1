@@ -11,12 +11,15 @@ import javafx.stage.Stage;
 public class QuestionTwo extends Application {
     @Override
     public void start(Stage primaryStage) {
+
+        //Create pane and set settings
         GridPane pane = new GridPane();
         pane.setAlignment(Pos.CENTER);
         pane.setPadding(new Insets(10, 10, 10, 10));
         pane.setVgap(5);
         pane.setHgap(5);
 
+        //Create labels and textfields
         Label amountL = new Label("Investment Amount");
         TextField amount = new TextField();
         Label yearsL = new Label( "Years");
@@ -26,9 +29,11 @@ public class QuestionTwo extends Application {
         Label futureAmountL = new Label("Future Amount");
         TextField futureAmount = new TextField();
 
+        //Create and program button
         Button calculate = new Button("Calculate");
         calculate.setOnAction(e->
         {
+            //Calculate for futureValue
             int amountInt = Integer.parseInt(amount.getText());
             int yearsInt = Integer.parseInt(years.getText());
             double inRateDouble = Double.parseDouble(inRate.getText());
@@ -39,6 +44,7 @@ public class QuestionTwo extends Application {
             futureAmount.setText(String.valueOf(futureValue));
         });
 
+        //Add components to pane
         pane.add(amountL, 0, 0);
         pane.add(amount,1, 0);
         pane.add(yearsL, 0, 1);
@@ -49,6 +55,7 @@ public class QuestionTwo extends Application {
         pane.add(futureAmount, 1, 3);
         pane.add(calculate, 1,4);
 
+        //Create scene
         Scene scene = new Scene(pane);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Question Two");
